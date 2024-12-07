@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'registration_login',
     'billings',
     'treatments',
+    'veterinarians',
     "crispy_forms",
     "crispy_bootstrap5",
 ]
