@@ -28,6 +28,7 @@ urlpatterns = [
     path('accounts/', include('registration_login.urls', namespace='registration_login')),
     path('bills/', include('billings.urls', namespace='billings')),
     path('treatments/', include('treatments.urls', namespace='treatments')),
+    path('vet/', include('veterinarians.urls', namespace='veterinarians')),
     path('logout/', auth_views.LogoutView.as_view(), name='logout'),
 ]
 
