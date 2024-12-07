@@ -1,16 +1,16 @@
 <div align="center" style="display: flex; align-items: center; justify-content: center;">
   <img src="https://drive.google.com/uc?export=view&id=1niorO4NvSKA-j6YI4OcgTNHztAXMWv8S" alt="Pet Clinic Logo" width="150" margin-right: 10px;>
-  <h1>Pet Veterinary Clinic System</h1>
+  <h1>PetVet - Veterinary Clinic Management System</h1>
 </div>
 
 
 
 
-Pet Veterinary Clinic System is a comprehensive web-based solution designed to streamline operations for veterinary clinics. The system caters to pet owners and veterinary staff, ensuring efficient management of appointments, pet health records, billing, and more.
+PetVet - Veterinary Clinic Management System is a comprehensive web-based solution designed to streamline operations for veterinary clinics. The system caters to pet owners and veterinary staff, ensuring efficient management of appointments, pet health records, billing, and more.
 
 ## 🐾 Project Overview
 
-The Pet Veterinary Clinic System is designed to simplify the management of both administrative and medical tasks within a veterinary clinic. The system provides a seamless experience for both pet owners and veterinary staff to manage appointments, access medical records, and process payments.
+The PetVet - Veterinary Clinic Management System is designed to simplify the management of both administrative and medical tasks within a veterinary clinic. The system provides a seamless experience for both pet owners and veterinary staff to manage appointments, access medical records, and process payments.
 
 ### Key Features:
 
