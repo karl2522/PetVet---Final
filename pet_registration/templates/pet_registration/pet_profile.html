@@ -1,0 +1,517 @@
+{% extends 'base.html' %} {% load static %} {% block title %}{{ pet.pet_name
+}}'s Medical Dashboard{% endblock %} {% block extra_css %}
+<style>
+  :root {
+    --primary-color: #5ba199;
+    --secondary-color: #ffd233;
+    --text-color: #333;
+    --border-color: #e5e7eb;
+  }
+
+  body {
+    color: var(--text-color);
+    background-color: #f8f9fa;
+  }
+
+  .pet-profile {
+    display: flex;
+    align-items: flex-start;
+    gap: 2rem;
+    background: white;
+    padding: 2rem;
+    border-radius: 15px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+
+  .pet-avatar {
+    width: 300px;
+    height: 300px;
+    object-fit: cover;
+    border-radius: 15px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  }
+
+  .profile-header {
+    flex: 1;
+  }
+
+  .pet-info {
+    max-width: 60%;
+  }
+
+  .pet-info h2 {
+    color: #333;
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .pet-details {
+    color: #666;
+    font-size: 1.1rem;
+  }
+
+  .pet-details p {
+    margin-bottom: 0.5rem;
+  }
+
+  .action-buttons {
+    display: flex;
+    gap: 0.5rem;
+    align-items: flex-start;
+  }
+
+  .btn {
+    white-space: nowrap;
+  }
+
+  .add-appointment-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 8px 16px;
+    background-color: var(--secondary-color);
+    color: var(--text-color);
+    border-radius: 8px;
+    text-decoration: none;
+  }
+
+  .add-appointment-btn:hover {
+    background-color: #e6c200;
+    color: var(--text-color);
+  }
+
+  .section-card {
+    background: white;
+    border-radius: 15px;
+    padding: 1.5rem;
+    margin-bottom: 2rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  }
+
+  .section-title {
+    font-size: 1.5rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .medical-table th {
+    font-weight: 600;
+    color: #666;
+  }
+
+  .medical-table td {
+    vertical-align: middle;
+  }
+
+  .status-badge {
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 0.875rem;
+    font-weight: 500;
+  }
+  .status-approved {
+    background-color: #28a745;
+    color: white;
+  }
+  .status-completed {
+    background-color: #198754;
+    color: white;
+  }
+  .status-cancelled {
+    background-color: #dc3545;
+    color: white;
+  }
+  .status-rejected {
+    background-color: #dc3545;
+    color: white;
+  }
+  .status-pending {
+    background-color: #ffc107;
+    color: black;
+  }
+
+  .more-info {
+    color: var(--primary-color);
+    text-decoration: none;
+    font-size: 0.9rem;
+  }
+
+  .file-link {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--text-color);
+    text-decoration: none;
+    padding: 0.5rem;
+    border-radius: 8px;
+  }
+
+  .file-link:hover {
+    background-color: #f8f9fa;
+    color: var(--primary-color);
+  }
+
+  .btn-add-appointment {
+    background-color: #ffd700;
+    color: #333;
+    border: none;
+    padding: 8px 20px;
+    border-radius: 8px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+  }
+
+  .btn-add-appointment:hover {
+    background-color: #ffc107;
+    transform: translateY(-2px);
+  }
+
+  .btn-edit-pet {
+    background-color: #20b2aa;
+    color: white;
+    border: none;
+    padding: 8px 20px;
+    border-radius: 8px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+  }
+
+  .btn-edit-pet:hover {
+    background-color: #1a8f89;
+    transform: translateY(-2px);
+  }
+
+  .btn-return {
+    background-color: #f8f9fa;
+    color: #6c757d;
+    border: none;
+    padding: 8px 20px;
+    border-radius: 8px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+  }
+
+  .btn-return:hover {
+    background-color: #e9ecef;
+    color: #495057;
+    transform: translateY(-2px);
+  }
+
+  .treatment-card {
+    border: 1px solid #dee2e6;
+    border-radius: 8px;
+    padding: 15px;
+    margin-bottom: 15px;
+    background-color: white;
+  }
+
+  .treatment-card.ongoing {
+    border-left-color: var(--secondary-color);
+  }
+
+  .treatment-card.completed {
+    border-left-color: #4caf50;
+  }
+
+  .treatment-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 1rem;
+  }
+
+  .treatment-title {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--text-color);
+    margin: 0;
+  }
+
+  .treatment-date {
+    font-size: 0.9rem;
+    color: #666;
+  }
+
+  .treatment-details {
+    font-size: 0.95rem;
+    color: #4b5563;
+    margin-bottom: 0.5rem;
+  }
+
+  .treatment-meta {
+    display: flex;
+    gap: 1rem;
+    font-size: 0.9rem;
+    color: #6b7280;
+  }
+
+  .treatment-vet {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .treatment-status {
+    padding: 0.25rem 0.75rem;
+    border-radius: 9999px;
+    font-size: 0.8rem;
+    font-weight: 500;
+  }
+
+  .status-scheduled {
+    background-color: #e5e7eb;
+    color: #374151;
+  }
+
+  .status-ongoing {
+    background-color: #fef3c7;
+    color: #92400e;
+  }
+
+  .status-completed {
+    background-color: #d1fae5;
+    color: #065f46;
+  }
+</style>
+{% endblock %} {% block content %}
+<div class="container py-4">
+  <div class="pet-profile mb-4">
+    {% if pet.image_url %}
+    <img
+      src="{{ pet.image_url.url }}"
+      alt="{{ pet.pet_name }}"
+      class="pet-avatar"
+    />
+    {% else %} {% if pet.species|lower == 'cat' %}
+    <img
+      src="{% static 'images/profile.png' %}"
+      alt="{{ pet.pet_name }}"
+      class="pet-avatar"
+    />
+    {% else %}
+    <img
+      src="{% static 'images/dogimg.png' %}"
+      alt="{{ pet.pet_name }}"
+      class="pet-avatar"
+    />
+    {% endif %} {% endif %}
+    <div class="profile-header">
+      <div class="d-flex justify-content-between align-items-start">
+        <div class="pet-info">
+          <h2 class="mb-2">
+            {{ pet.pet_name }} {% if pet.sex == 'Male' %}♂{% else %}♀{% endif %}
+          </h2>
+          <div class="pet-details">
+            <p class="mb-1">
+              {{ pet.species }} · {{ pet.breed }} · Weight: {{ pet.weight }}kg
+            </p>
+            <p class="mb-2">ID {{ pet.pet_id }} · Age: {{ pet.age }} y.o</p>
+            <p><strong>Sex:</strong> {{ pet.sex }}</p>
+            <p><strong>Weight:</strong> {{ pet.weight }} kg</p>
+          </div>
+        </div>
+        <div class="action-buttons">
+          <a
+            href="{% url 'appointments:new_appointment' %}?pet={{ pet.pet_id }}"
+            class="btn btn-add-appointment"
+          >
+            Add Appointment
+          </a>
+          <a
+            href="{% url 'pet_registration:update_pet' pet.pet_id %}"
+            class="btn btn-edit-pet"
+          >
+            Edit Pet
+          </a>
+          <a
+            href="{% url 'pet_registration:pet_list_by_owner' %}"
+            class="btn btn-return"
+          >
+            Return to List
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-6">
+      <div class="section-card">
+        <h3 class="section-title">Medical Card</h3>
+        <div class="table-responsive">
+          <table class="table medical-table">
+            <thead>
+              <tr>
+                <th>Date</th>
+                <th>Diagnosis</th>
+                <th>Doctor</th>
+                <th>Next Visit</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% if medical_history %} {% for record in medical_history %}
+              <tr>
+                <td>{{ record.date|date:"M d, Y" }}</td>
+                <td>{{ record.diagnosis }}</td>
+                <td>
+                  Dr. {{ record.veterinarian.profile.first_name }} {{
+                  record.veterinarian.profile.last_name }}
+                </td>
+                <td>
+                  {% if record.next_visit_date %}{{
+                  record.next_visit_date|date:"M d, Y" }}{% else %}N/A{% endif
+                  %}
+                </td>
+              </tr>
+              {% endfor %} {% else %}
+              <tr>
+                <td colspan="4" class="text-center">
+                  No medical records available
+                </td>
+              </tr>
+              {% endif %}
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-6">
+      <div class="section-card">
+        <h3 class="section-title">Upcoming Appointments</h3>
+        <div class="table-responsive">
+          <table class="table medical-table">
+            <thead>
+              <tr>
+                <th>Date</th>
+                <th>Time</th>
+                <th>Doctor</th>
+                <th>Status</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for appointment in upcoming_appointments %}
+              <tr>
+                <td>{{ appointment.date|date:"M d, Y" }}</td>
+                <td>{{ appointment.time|time:"g:i A" }}</td>
+                <td>
+                  Dr. {{ appointment.veterinarian.profile.first_name }} {{
+                  appointment.veterinarian.profile.last_name }}
+                </td>
+                <td>
+                  <span class="status-badge status-approved">
+                    {{ appointment.get_status_display }}
+                  </span>
+                </td>
+              </tr>
+              {% empty %}
+              <tr>
+                <td colspan="4" class="text-center">
+                  No upcoming appointments for {{ pet.pet_name }}
+                </td>
+              </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-6">
+      <div class="section-card">
+        <h3 class="section-title">Completed Appointments</h3>
+        {% if completed_appointments %} {% for appointment in
+        completed_appointments %}
+        <div class="treatment-card">
+          <div class="d-flex justify-content-between align-items-start mb-2">
+            <h5 class="mb-0">{{ appointment.get_service_type_display }}</h5>
+            <span class="status-badge status-completed"
+              >{{ appointment.get_status_display }}</span
+            >
+          </div>
+          <p class="text-muted mb-2">
+            Date: {{ appointment.date|date:"M d, Y" }} at {{
+            appointment.time|time:"g:i A" }}
+          </p>
+          <p class="mb-0">
+            Dr. {{ appointment.veterinarian.profile.first_name }} {{
+            appointment.veterinarian.profile.last_name }}
+          </p>
+        </div>
+        {% endfor %} {% else %}
+        <p class="text-muted">
+          No completed appointments for {{ pet.pet_name }}
+        </p>
+        {% endif %}
+      </div>
+    </div>
+
+    <div class="col-md-6">
+      <div class="section-card">
+        <h3 class="section-title">Cancelled/Rejected Appointments</h3>
+        {% if cancelled_appointments %} {% for appointment in
+        cancelled_appointments %}
+        <div class="treatment-card">
+          <div class="d-flex justify-content-between align-items-start mb-2">
+            <h5 class="mb-0">{{ appointment.get_service_type_display }}</h5>
+            <span
+              class="status-badge {% if appointment.status == 'CANCELLED' %}status-cancelled{% else %}status-rejected{% endif %}"
+            >
+              {{ appointment.get_status_display }}
+            </span>
+          </div>
+          <p class="text-muted mb-2">
+            Date: {{ appointment.date|date:"M d, Y" }} at {{
+            appointment.time|time:"g:i A" }}
+          </p>
+          <p class="mb-0">
+            Dr. {{ appointment.veterinarian.profile.first_name }} {{
+            appointment.veterinarian.profile.last_name }}
+          </p>
+        </div>
+        {% endfor %} {% else %}
+        <p class="text-muted">
+          No cancelled/rejected appointments for {{ pet.pet_name }}
+        </p>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-6">
+      <div class="section-card">
+        <h3 class="section-title">Completed Treatments</h3>
+        {% if completed_treatments %} {% for treatment in completed_treatments
+        %}
+        <div class="treatment-card">
+          <div class="d-flex justify-content-between align-items-start mb-2">
+            <h5 class="mb-0">{{ treatment.get_treatment_type_display }}</h5>
+            <span class="status-badge status-completed"
+              >{{ treatment.get_status_display }}</span
+            >
+          </div>
+          {% if treatment.medication %}
+          <p class="mb-1">
+            <strong>Medication:</strong> {{ treatment.medication.name }}
+          </p>
+          {% endif %} {% if treatment.procedure %}
+          <p class="mb-1">
+            <strong>Procedure:</strong> {{ treatment.procedure.name }}
+          </p>
+          {% endif %}
+          <p class="text-muted mb-2">
+            Completed: {{ treatment.completed_date|date:"M d, Y" }}
+          </p>
+          <p class="mb-0">{{ treatment.notes }}</p>
+        </div>
+        {% endfor %} {% else %}
+        <p class="text-muted">No completed treatments</p>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
