@@ -1,4 +1,7 @@
-# <img src="https://drive.google.com/uc?export=view&id=1niorO4NvSKA-j6YI4OcgTNHztAXMWv8S" width="100"/>  Pet Veterinary Clinic System
+#<div align="center">
+  <img src="https://drive.google.com/uc?export=view&id=1niorO4NvSKA-j6YI4OcgTNHztAXMWv8S" alt="Pet Clinic Logo" width="100">
+  <h1>Pet Veterinary Clinic System</h1>
+</div>
 
 
 
