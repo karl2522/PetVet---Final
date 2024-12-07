@@ -1,4 +1,4 @@
-# ![PetVet Logo](https://drive.google.com/uc?export=view&id=1niorO4NvSKA-j6YI4OcgTNHztAXMWv8S)  Pet Veterinary Clinic System
+# <img src="https://drive.google.com/uc?export=view&id=1niorO4NvSKA-j6YI4OcgTNHztAXMWv8S" width="200"/>  Pet Veterinary Clinic System
 
 
 
