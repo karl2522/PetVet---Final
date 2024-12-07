@@ -47,48 +47,33 @@ To get started with the Pet Veterinary Clinic System, follow these steps:
 
 ### 1. Clone the repository to your local machine:
 
-    ```bash
-    git clone https://github.com/karl2522/PetVet.git
-    ```
+    git clone https://github.com/karl2522/PetVet-Final.git
 
 ### 2. Navigate to the project directory:
 
-    ```bash
-    cd mainpages
-    ```
+    cd PetVet-Final # (Skip this if you're already in the project root)
 
-### 3. Create a virtual environment:
+### 3. Install the dependencies from `requirements.txt`:
 
-    ```bash
-    python3 -m venv venv
-    ```
+    pip install -r requirements.txt
 
-### 4. Activate the virtual environment:
+### 4. Apply Database Migrations:
 
-    For **macOS/Linux**:
+    python manage.py migrate
 
-    ```bash
-    source venv/bin/activate
-    ```
+### 5. Run the Development Server:
 
-    For **Windows**:
+    python manage.py runserver
 
-    ```bash
-    venv\Scripts\activate
-    ```
 
 ### 5. Apply Database Migrations:
-    Since we are using SQLite as the local database, no additional configuration is needed. Run the following command to apply migrations:
 
-    ```bash
     python manage.py migrate
-    ```
 
 ### 6. Run the Development Server:
 
-    ```bash
     python manage.py runserver
-    ```
+
 
 
 
