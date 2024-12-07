@@ -7,9 +7,9 @@ from django.contrib import messages
 from .models import Profile
 from django.http import HttpResponse, JsonResponse
 from django.contrib.auth.models import User
-#from pet_registration.models import Pet
+from pet_registration.models import Pet
 from django.views.decorators.csrf import ensure_csrf_cookie
-#from veterinarians.models import MedicalRecord, BillingRecord
+from veterinarians.models import MedicalRecord, BillingRecord
 
 #Authentication models and functions
 
