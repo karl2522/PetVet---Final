@@ -50,7 +50,7 @@
                                             {% endif %}
                                             {% if appointment.status == 'COMPLETED' and appointment.pet and appointment.pet.pet_id %}
                                                 <a href="{% url 'veterinarians:add_medical_record' appointment.pet.pet_id %}" class="btn btn-sm btn-success">
-                                                    <i class="bi bi-file-medical me-1"></i>Add Medical Record & Bill
+                                                    <i class="bi bi-file-medical me-1"></i>Add Medical Record / Bill
                                                 </a>
                                             {% endif %}
                                         </div>

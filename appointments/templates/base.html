@@ -284,9 +284,9 @@
                                 </a>
                             </li>
                             <li>
-                                <a class="dropdown-item" href="{% url 'registration_login:logout' %}">
+                                <button class="dropdown-item" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#logoutValidationModal">
                                     <i class="bi bi-box-arrow-right me-2"></i>Logout
-                                </a>
+                                </button>
                             </li>
                         </ul>
                     </div>
@@ -404,4 +404,26 @@
     </script>
     {% block extra_js %}{% endblock %}
 </body>
+
+<!-- Logout Validation Modal -->
+<div class="modal fade" id="logoutValidationModal" tabindex="-1" aria-labelledby="logoutValidationModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="logoutValidationModalLabel">Logout</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p>Done for today? Log off, we’ll be here for your pet when you need us!</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">No, Keep me logged in!</button>
+                <form method="post" action="{% url 'registration_login:logout' %}" class="d-inline">
+                    {% csrf_token %}
+                    <button type="submit" class="btn btn-theme-danger">Yes, I’m done!</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
 </html>
