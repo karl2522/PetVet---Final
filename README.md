@@ -1,7 +1,6 @@
-<div align="center" style="display: flex; align-items: center; justify-content: center;">
-  <img src="https://drive.google.com/uc?export=view&id=1niorO4NvSKA-j6YI4OcgTNHztAXMWv8S" alt="Pet Clinic Logo" width="100" margin-right: 10px;>
-  <h1>Pet Veterinary Clinic System</h1>
-</div>
+<img src="https://drive.google.com/uc?export=view&id=1niorO4NvSKA-j6YI4OcgTNHztAXMWv8S" alt="Pet Clinic Logo" width="100"> # Pet Veterinary Clinic System
+
+
 
 
 
