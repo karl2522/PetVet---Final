@@ -1,4 +1,4 @@
-# ![PetVet Logo](https://drive.google.com/drive/folders/149B5F2F3pqelvTjxvl7CYUxXeig2mNZg?fbclid=IwZXh0bgNhZW0CMTEAAR0GgTTWQMcEoPJfczlWMT7Iy9FVB2Y7iJq91mF10zD_fQIwqytyDNVLsW8_aem_hsSMSDJoah9j8r-YtOa24g)  Pet Veterinary Clinic System
+# ![PetVet Logo](https://drive.google.com/uc?export=view&id=1niorO4NvSKA-j6YI4OcgTNHztAXMWv8S)  Pet Veterinary Clinic System
 
 
 
