@@ -19,7 +19,7 @@ The system is built using **Django** for the backend and **HTML** for the fronte
 
 ### Frontend:
 - **HTML**: For the structure of web pages.
-- **Bootstrap CSS**: For styling and layout of the frontend.
+- **Bootstrap CSS** and **Tailwind CSS**: For styling and layout of the frontend.
 - **JavaScript**: For dynamic client-side functionality and interactivity.
 
 ### Backend:
