@@ -71,13 +71,6 @@ To get started with the Pet Veterinary Clinic System, follow these steps:
     python manage.py runserver
 
 
-### 5. Apply Database Migrations:
-
-    python manage.py migrate
-
-### 6. Run the Development Server:
-
-    python manage.py runserver
 
 
 
