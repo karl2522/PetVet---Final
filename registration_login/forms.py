@@ -21,5 +21,9 @@ class CreateUserForm(UserCreationForm):
 
 # Authenicate a user (Model Form)
 class LoginForm(AuthenticationForm):
-    username = forms.CharField(widget=TextInput())
-    password = forms.CharField(widget=PasswordInput())
+    username = forms.CharField(
+        widget=TextInput(attrs={'autocomplete': 'username'})
+    )
+    password = forms.CharField(
+        widget=forms.PasswordInput(attrs={'autocomplete': 'current-password'})
+    )
