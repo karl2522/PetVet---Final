@@ -36,7 +36,8 @@ We are using **SQLite** as the local database for this project. By default, Djan
 
 ## ⚙️ Features
 
-### User Side (Pet Owners):
+### User Side (Pet Owners)
+
 - **Book Appointments**: Schedule consultations for their pets online.
 - **Access Medical Records**: View their pets’ vaccination schedules and health history.
 - **Billing and Payments History**: Check past appointment bills.
@@ -45,6 +46,7 @@ We are using **SQLite** as the local database for this project. By default, Djan
 - **Appointment Management**: Track, update, and confirm bookings.
 - **Pet Health Records**: Store and manage detailed medical records and procedures.
 - **Billing Management**: Generate invoices for completed appointments.
+- **Dashboard**: Displays today's appointments, pending appointments, recent medical records, and pending bills. 
 
 ## 🚀 Installation
 
