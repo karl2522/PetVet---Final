@@ -98,8 +98,8 @@ def cancel_appointment(request, pk):
         messages.error(request, 'You do not have permission to cancel this appointment.')
         return redirect('appointments:appointment_detail', pk=pk)
     
-    # Check if appointment can be cancelled (only PENDING or APPROVED)
-    if appointment.status not in ['PENDING', 'APPROVED']:
+    # Check if appointment can be cancelled (only PENDING)
+    if appointment.status not in ['PENDING']:
         messages.error(request, 'This appointment cannot be cancelled.')
         return redirect('appointments:appointment_detail', pk=pk)
     

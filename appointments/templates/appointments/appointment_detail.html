@@ -11,7 +11,7 @@
                 <a href="{% url 'appointments:appointment_list' %}" class="text-decoration-none">
                     <i class="fas fa-arrow-left"></i> Back to Appointments
                 </a>
-                {% if appointment.status == 'PENDING' or appointment.status != 'APPROVED' %}
+                {% if appointment.status == 'PENDING' %}
                 <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#cancelModal">
                     <i class="bi bi-x-circle me-2"></i>Cancel Appointment
                 </button>

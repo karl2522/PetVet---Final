@@ -79,11 +79,15 @@ def my_login(request):
                 return redirect('homepage:index')
             else:
                 messages.error(request, 'Invalid username or password')
+        else:
+            print(form.errors)
+            messages.error(request, 'Invalid username or password')
     else:
         form = LoginForm()
 
     context = {'form': form}
     return render(request, 'registration_login/my_login.html', context=context)
+
 
 def user_logout(request):
     logout(request)

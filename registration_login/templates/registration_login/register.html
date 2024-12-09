@@ -98,7 +98,7 @@
                 </div>
                 <div class="relative">
                     {{ form.password1|add_class:"peer w-full px-4 py-3 text-sm border-2 border-gray-300 rounded-lg outline-none transition-all duration-300 focus:border-teal-500 placeholder-transparent" }}
-                    <label for="password" class="absolute left-4 -top-3 text-base text-gray-600 bg-white px-1 transition-all duration-300 peer-placeholder-shown:top-3 peer-placeholder-shown:text-base peer-focus:-top-3 peer-focus:text-base peer-focus:text-teal-500">Password</label>
+                    <label for="id_password1" class="absolute left-4 -top-3 text-base text-gray-600 bg-white px-1 transition-all duration-300 peer-placeholder-shown:top-3 peer-placeholder-shown:text-base peer-focus:-top-3 peer-focus:text-base peer-focus:text-teal-500">Password</label>
                     <div id="passwordRequirements" class="hidden mt-2 text-sm text-gray-600 space-y-1 fade-in bg-white-100 p-4 rounded-lg">
                         <p class="flex items-center"><span id="lengthCheck" class="w-4 h-4 inline-block mr-2 rounded-full border border-gray-300"></span>At least 8 characters</p>
                         <p class="flex items-center"><span id="uppercaseCheck" class="w-4 h-4 inline-block mr-2 rounded-full border border-gray-300"></span>One uppercase letter</p>
@@ -109,7 +109,7 @@
                 </div>
                 <div class="relative">
                     {{ form.password2|add_class:"peer w-full px-4 py-3 text-sm border-2 border-gray-300 rounded-lg outline-none transition-all duration-300 focus:border-teal-500 placeholder-transparent" }}
-                    <label for="confirmPassword" class="absolute left-4 -top-3 text-base text-gray-600 bg-white px-1 transition-all duration-300 peer-placeholder-shown:top-3 peer-placeholder-shown:text-base peer-focus:-top-3 peer-focus:text-base peer-focus:text-teal-500">Confirm Password</label>
+                    <label for="id_password2" class="absolute left-4 -top-3 text-base text-gray-600 bg-white px-1 transition-all duration-300 peer-placeholder-shown:top-3 peer-placeholder-shown:text-base peer-focus:-top-3 peer-focus:text-base peer-focus:text-teal-500">Confirm Password</label>
                 </div>
                 <!-- Trigger -->
                 <form method="POST" autocomplete="off">
@@ -135,8 +135,8 @@
      
 
     <script>
-        const passwordInput = document.getElementById('password');
-        const confirmPasswordInput = document.getElementById('confirmPassword');
+        const passwordInput = document.getElementById('id_password1');
+        const confirmPasswordInput = document.getElementById('id_password2');
         const passwordRequirements = document.getElementById('passwordRequirements');
         const checks = {
             length: document.getElementById('lengthCheck'),
