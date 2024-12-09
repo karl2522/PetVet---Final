@@ -37,13 +37,14 @@ We are using **SQLite** as the local database for this project. By default, Djan
 ## ⚙️ Features
 
 ### User Side (Pet Owners)
-- **Owner Registration**: The owner can create account and update their personal information.
+- **Owner Registration**: The owner can create an account and update their personal information.
 - **Pet Registration**: The owner can register his/her pet/s.
 - **Book Appointments**: Schedule consultations for their pets online.
 - **Access Medical Records**: View their pets’ vaccination schedules and health history.
 - **Billing and Payments History**: Check past appointment bills.
 
 ### Vet Side (Management):
+- **Vet Profile**: A vet can update his/her profile.
 - **Appointment Management**: Track, update, and confirm bookings.
 - **Pet Health Records**: Store and manage detailed medical records and procedures.
 - **Billing Management**: Generate invoices for completed appointments.
