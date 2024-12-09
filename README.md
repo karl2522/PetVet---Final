@@ -37,7 +37,7 @@ We are using **SQLite** as the local database for this project. By default, Djan
 ## ⚙️ Features
 
 ### User Side (Pet Owners)
--**Owner Registration**: T
+- **Owner Registration**: The owner can create account and update their personal information.
 - **Pet Registration**: The owner can register his/her pet/s.
 - **Book Appointments**: Schedule consultations for their pets online.
 - **Access Medical Records**: View their pets’ vaccination schedules and health history.
