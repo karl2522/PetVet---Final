@@ -19,6 +19,19 @@ class CreateUserForm(UserCreationForm):
         model = User
         fields = ['username', 'first_name', 'last_name', 'email', 'role', 'password1', 'password2']
 
+    def clean(self):
+        cleaned_data = super().clean()
+        username = cleaned_data.get('username')
+        first_name = cleaned_data.get('first_name')
+
+        # Check if a user with the same username and first name exists
+        if User.objects.filter(username=username, first_name=first_name).exists():
+            raise forms.ValidationError(
+                "A user with this username and first name already exists. Please choose a different combination."
+            )
+
+        return cleaned_data
+
 # Authenicate a user (Model Form)
 class LoginForm(AuthenticationForm):
     username = forms.CharField(

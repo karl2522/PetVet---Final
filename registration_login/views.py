@@ -21,39 +21,51 @@ def homepage(request):
 def landingpage(request):
     return render(request, 'mainpages/landingpage.html')
 
+from django.db import IntegrityError
+from django.contrib.auth.models import User
+
 def register(request):
     form = CreateUserForm()
     if request.method == "POST":
         form = CreateUserForm(request.POST)
-        if form.is_valid():
-            # Save the User instance
-            user = form.save()
+        try:
+            if form.is_valid():
+                # Save the User instance
+                user = form.save()
 
-            # Create or get the Profile for the new user
-            profile, created = Profile.objects.get_or_create(
-                user=user,
-                defaults={
-                    'first_name': form.cleaned_data.get('first_name'),
-                    'last_name': form.cleaned_data.get('last_name'),
-                    'role': form.cleaned_data.get('role'),
-                }
-            )
+                # Create or get the Profile for the new user
+                profile, created = Profile.objects.get_or_create(
+                    user=user,
+                    defaults={
+                        'first_name': form.cleaned_data.get('first_name'),
+                        'last_name': form.cleaned_data.get('last_name'),
+                        'role': form.cleaned_data.get('role'),
+                    }
+                )
+                
+                if not created:
+                    # Update existing profile with form data
+                    profile.first_name = form.cleaned_data.get('first_name')
+                    profile.last_name = form.cleaned_data.get('last_name')
+                    profile.role = form.cleaned_data.get('role')
+                    profile.save()
+
+                messages.success(request, 'Registration successful! Please log in.')
+                return redirect('registration_login:registration_success')
             
-            if not created:
-                # Update existing profile with form data
-                profile.first_name = form.cleaned_data.get('first_name')
-                profile.last_name = form.cleaned_data.get('last_name')
-                profile.role = form.cleaned_data.get('role')
-                profile.save()
-
-            messages.success(request, 'Registration successful! Please log in.')
-            return redirect('registration_login:registration_success') 
-        else:
+            else: 
+                messages.error(request, 'Username or firstname already exists.')
+        except IntegrityError:
+            # Handle duplicate username
+            messages.error(request, 'Username already exists. Please choose a different username.')
+        
+        # If form is invalid or username exists
+        if not form.is_valid():
             print(form.errors)
 
     context = {'form': form}
     return render(request, 'registration_login/register.html', context=context)
-
+    
 def my_login(request):
     if request.method == "POST":
         form = LoginForm(request, data=request.POST)
