@@ -10,7 +10,7 @@ class CreateUserForm(UserCreationForm):
     first_name = forms.CharField(max_length=50, required=True)
     last_name = forms.CharField(max_length=50, required=True)
     role = forms.ChoiceField(
-        choices=Profile.ROLE_CHOICES,
+        choices=[('', 'Select Role')] + Profile.ROLE_CHOICES,
         required=True,
         help_text="Select your role in the system"
     )
