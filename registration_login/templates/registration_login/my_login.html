@@ -80,47 +80,47 @@
     </div>
     {% endif %}
 
-    <div class="bg-white rounded-2xl shadow-2xl overflow-hidden max-w-4xl w-full flex flex-col-reverse md:flex-row">
-        <!-- Login Form Section -->
-        <div class="md:w-1/2 p-8">
-            <h2 class="text-3xl font-extrabold text-gray-900 mb-6">Welcome Back!</h2>
-            <form method="POST" class="space-y-6" autocomplete="off">
+    <div class="bg-white rounded-xl shadow-xl overflow-hidden max-w-3xl w-full flex flex-col-reverse md:flex-row">
+        <!-- Login Form Section - Reduced padding and spacing -->
+        <div class="md:w-1/2 p-4">
+            <h2 class="text-2xl font-bold text-gray-900 mb-4">Welcome Back!</h2>
+            <form method="POST" class="space-y-4" autocomplete="off">
                 {% csrf_token %}
                 <div class="relative">
-                    {{ form.username|add_class:"peer w-full px-4 py-3 border-2 border-gray-300 rounded-lg outline-none transition-all duration-300 focus:border-teal-500 placeholder-transparent" }}
-                    <label for="username" class="absolute left-4 -top-3 text-base text-gray-600 bg-white px-1 transition-all duration-300 peer-placeholder-shown:top-3 peer-placeholder-shown:text-base peer-focus:-top-3 peer-focus:text-sm peer-focus:text-teal-500">Username</label>
+                    {{ form.username|add_class:"peer w-full px-3 py-2 border-2 border-gray-300 rounded-md outline-none transition-all duration-300 focus:border-teal-500 placeholder-transparent" }}
+                    <label for="username" class="absolute left-3 -top-2 text-sm text-gray-600 bg-white px-1 transition-all duration-300 peer-placeholder-shown:top-2 peer-placeholder-shown:text-sm peer-focus:-top-2 peer-focus:text-xs peer-focus:text-teal-500">Username</label>
                 </div>
                 <div class="relative">
-                    {{ form.password|add_class:"peer w-full px-4 py-3 border-2 border-gray-300 rounded-lg outline-none transition-all duration-300 focus:border-teal-500 placeholder-transparent" }}
-                    <label for="password" class="absolute left-4 -top-3 text-base text-gray-600 bg-white px-1 transition-all duration-300 peer-placeholder-shown:top-3 peer-placeholder-shown:text-base peer-focus:-top-3 peer-focus:text-sm peer-focus:text-teal-500">Password</label>
+                    {{ form.password|add_class:"peer w-full px-3 py-2 border-2 border-gray-300 rounded-md outline-none transition-all duration-300 focus:border-teal-500 placeholder-transparent" }}
+                    <label for="password" class="absolute left-3 -top-2 text-sm text-gray-600 bg-white px-1 transition-all duration-300 peer-placeholder-shown:top-2 peer-placeholder-shown:text-sm peer-focus:-top-2 peer-focus:text-xs peer-focus:text-teal-500">Password</label>
                 </div>
                 <div class="flex items-center justify-between">
                     <div class="flex items-center">
-                        <input type="checkbox" id="remember" name="remember" class="h-4 w-4 text-teal-600 focus:ring-teal-500 border-gray-300 rounded">
-                        <label for="remember" class="ml-2 block text-sm text-gray-900">Remember me</label>
+                        <input type="checkbox" id="remember" name="remember" class="h-3 w-3 text-teal-600 focus:ring-teal-500 border-gray-300 rounded">
+                        <label for="remember" class="ml-2 block text-xs text-gray-900">Remember me</label>
                     </div>
-                    <a href="#" class="text-sm font-medium text-teal-600 hover:underline">Forgot password?</a>
+                    <a href="#" class="text-xs font-medium text-teal-600 hover:underline">Forgot password?</a>
                 </div>
-                <button type="submit" class="w-full py-3 px-4 bg-gradient-to-r from-teal-600 to-cyan-600 text-white font-bold rounded-lg shadow-lg hover:from-teal-700 hover:to-cyan-700 transition-all duration-300 transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-teal-500">
+                <button type="submit" class="w-full py-2 px-3 bg-gradient-to-r from-teal-600 to-cyan-600 text-white font-medium rounded-md shadow-md hover:from-teal-700 hover:to-cyan-700 transition-all duration-300 transform hover:scale-102 focus:outline-none focus:ring-2 focus:ring-offset-1 focus:ring-teal-500">
                     Sign In
                 </button>
             </form>
-            <p class="mt-8 text-center text-sm text-gray-600">
+            <p class="mt-4 text-center text-xs text-gray-600">
                 Don't have an account? <a href="{% url 'registration_login:register' %}" class="font-medium text-teal-600 hover:underline">Sign up</a>
             </p>
         </div>
         
-        <!-- Cat Image Section -->
-        <div class="md:w-1/2 relative bg-gradient-to-br from-teal-600 to-cyan-600 flex items-center justify-center p-8">
+        <!-- Cat Image Section - Reduced padding and image size -->
+        <div class="md:w-1/2 relative bg-gradient-to-br from-teal-600 to-cyan-600 flex items-center justify-center p-4">
             <div class="absolute inset-0 opacity-20">
                 <svg class="w-full h-full" viewBox="0 0 100 100" preserveAspectRatio="none">
                     <path d="M0,0 L100,0 L100,100 L0,100 Z" fill="none" stroke="white" stroke-width="2" stroke-dasharray="5,5" />
                 </svg>
             </div>
-            <img src="{% static 'images/cat.jpg' %}" alt="Cute cat" class="w-64 h-64 object-cover rounded-full border-4 border-white shadow-lg float-animation" />
-            <div class="absolute bottom-8 left-8 right-8 text-center">
-                <h1 class="text-3xl font-bold text-white drop-shadow-lg">Purr-fect Care Awaits!</h1>
-                <p class="mt-2 text-lg text-white drop-shadow">Login to manage your pet's health journey</p>
+            <img src="{% static 'images/cat.jpg' %}" alt="Cute cat" class="w-48 h-48 object-cover rounded-full border-4 border-white shadow-lg float-animation" />
+            <div class="absolute bottom-4 left-4 right-4 text-center">
+                <h1 class="text-2xl font-bold text-white drop-shadow-lg">Purr-fect Care Awaits!</h1>
+                <p class="mt-1 text-sm text-white drop-shadow">Login to manage your pet's health journey</p>
             </div>
         </div>
     </div>
