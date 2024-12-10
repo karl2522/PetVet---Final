@@ -61,74 +61,70 @@
     </style>
 </head>
 <body class="bg-gradient-to-br from-teal-100 to-cyan-100 min-h-screen flex items-center justify-center p-4">
-    <div class="bg-white rounded-2xl shadow-2xl overflow-hidden max-w-4xl w-full flex flex-col md:flex-row">
+    <div class="bg-white rounded-xl shadow-xl overflow-hidden max-w-4xl w-full flex flex-col md:flex-row">
         <!-- Dog Image Section -->
-        <div class="md:w-1/2 relative">
-            <img src="{% static 'images/labrador.jpg' %}" alt="Cute dog" class="w-full h-full object-cover" />
-            <div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent flex items-end p-8">
-                <h1 class="text-4xl font-bold text-white drop-shadow-lg">Join Our Pack!</h1>
+        <div class="md:w-1/2 relative h-48 md:h-auto">
+            <img src="{% static 'images/labrador.jpg' %}" alt="Cute dog" class="w-full h-full object-cover pointer-events-none" />
+            <div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent flex items-end p-4">
+                <h1 class="text-2xl font-bold text-white drop-shadow-lg select-none">Join Our Pack!</h1>
             </div>
         </div>
         
         <!-- Registration Form Section -->
-        <div class="md:w-1/2 p-8">
-            <h2 class="text-3xl font-extrabold text-gray-900 mb-6">Create Account</h2>
-            <form method="POST" class="space-y-6">
+        <div class="md:w-1/2 p-4 select-none">
+            <h2 class="text-xl font-bold text-gray-900 mb-3">Create Account</h2>
+            <form method="POST" class="space-y-3" autocomplete="off">
                 {% csrf_token %}
                 <div class="relative">
-                    {{ form.username|add_class:"peer w-full px-4 py-3 text-sm border-2 border-gray-300 rounded-lg outline-none transition-all duration-300 focus:border-teal-500 placeholder-transparent" }}
-                    <label for="userName" class="absolute left-4 -top-3 text-base text-gray-600 bg-white px-1 transition-all duration-300 peer-placeholder-shown:top-3 peer-placeholder-shown:text-base peer-focus:-top-3 peer-focus:text-base peer-focus:text-teal-500">Username</label>
+                    {{ form.username|add_class:"peer w-full px-3 py-2 text-sm border border-gray-300 rounded-md outline-none transition-all duration-300 focus:border-teal-500 placeholder-transparent cursor-text" }}
+                    <label for="userName" class="absolute left-3 -top-2 text-sm text-gray-600 bg-white px-1 transition-all duration-300 peer-placeholder-shown:top-2 peer-placeholder-shown:text-sm peer-focus:-top-2 peer-focus:text-xs peer-focus:text-teal-500 select-none">Username</label>
                 </div>
                 <div class="relative">
-                    {{ form.first_name|add_class:"peer w-full px-4 py-3 text-sm border-2 border-gray-300 rounded-lg outline-none transition-all duration-300 focus:border-teal-500 placeholder-transparent" }}
-                    <label for="firstName" class="absolute left-4 -top-3 text-base text-gray-600 bg-white px-1 transition-all duration-300 peer-placeholder-shown:top-3 peer-placeholder-shown:text-base peer-focus:-top-3 peer-focus:text-base peer-focus:text-teal-500">First Name</label>
+                    {{ form.first_name|add_class:"peer w-full px-3 py-2 text-sm border border-gray-300 rounded-md outline-none transition-all duration-300 focus:border-teal-500 placeholder-transparent cursor-text" }}
+                    <label for="firstName" class="absolute left-3 -top-2 text-sm text-gray-600 bg-white px-1 transition-all duration-300 peer-placeholder-shown:top-2 peer-placeholder-shown:text-sm peer-focus:-top-2 peer-focus:text-xs peer-focus:text-teal-500 select-none">First Name</label>
                 </div>
                 <div class="relative">
-                    {{ form.last_name|add_class:"peer w-full px-4 py-3 text-sm border-2 border-gray-300 rounded-lg outline-none transition-all duration-300 focus:border-teal-500 placeholder-transparent" }}
-                    <label for="lastName" class="absolute left-4 -top-3 text-base text-gray-600 bg-white px-1 transition-all duration-300 peer-placeholder-shown:top-3 peer-placeholder-shown:text-base peer-focus:-top-3 peer-focus:text-base peer-focus:text-teal-500">Last Name</label>
-                </div>
-                <!-- Role Dropdown -->
-                <div class="relative">
-                    {{ form.role|add_class:"peer w-full px-4 py-3 border-2 border-gray-300 rounded-lg outline-none transition-all duration-300 focus:border-teal-500 placeholder-transparent" }}
-                    <label for="{{ form.role.id_for_label }}" class="absolute left-4 -top-3 text-sm text-gray-600 bg-white px-1 transition-all duration-300 peer-placeholder-shown:top-3 peer-placeholder-shown:text-base peer-focus:-top-3 peer-focus:text-sm peer-focus:text-teal-500">Role</label>
+                    {{ form.last_name|add_class:"peer w-full px-3 py-2 text-sm border border-gray-300 rounded-md outline-none transition-all duration-300 focus:border-teal-500 placeholder-transparent cursor-text" }}
+                    <label for="lastName" class="absolute left-3 -top-2 text-sm text-gray-600 bg-white px-1 transition-all duration-300 peer-placeholder-shown:top-2 peer-placeholder-shown:text-sm peer-focus:-top-2 peer-focus:text-xs peer-focus:text-teal-500 select-none">Last Name</label>
                 </div>
                 <div class="relative">
-                    {{ form.email|add_class:"peer w-full px-4 py-3 text-sm border-2 border-gray-300 rounded-lg outline-none transition-all duration-300 focus:border-teal-500 placeholder-transparent" }}
-                    <label for="email" class="absolute left-4 -top-3 text-base text-gray-600 bg-white px-1 transition-all duration-300 peer-placeholder-shown:top-3 peer-placeholder-shown:text-base peer-focus:-top-3 peer-focus:text-base peer-focus:text-teal-500">Email Address</label>
+                    {{ form.role|add_class:"peer w-full px-3 py-2 text-sm border border-gray-300 rounded-md outline-none transition-all duration-300 focus:border-teal-500 placeholder-transparent cursor-pointer" }}
+                    <label for="{{ form.role.id_for_label }}" class="absolute left-3 -top-2 text-sm text-gray-600 bg-white px-1 transition-all duration-300 peer-placeholder-shown:top-2 peer-placeholder-shown:text-sm peer-focus:-top-2 peer-focus:text-xs peer-focus:text-teal-500 select-none">Role</label>
                 </div>
                 <div class="relative">
-                    {{ form.password1|add_class:"peer w-full px-4 py-3 text-sm border-2 border-gray-300 rounded-lg outline-none transition-all duration-300 focus:border-teal-500 placeholder-transparent" }}
-                    <label for="id_password1" class="absolute left-4 -top-3 text-base text-gray-600 bg-white px-1 transition-all duration-300 peer-placeholder-shown:top-3 peer-placeholder-shown:text-base peer-focus:-top-3 peer-focus:text-base peer-focus:text-teal-500">Password</label>
-                    <div id="passwordRequirements" class="hidden mt-2 text-sm text-gray-600 space-y-1 fade-in bg-white-100 p-4 rounded-lg">
-                        <p class="flex items-center"><span id="lengthCheck" class="w-4 h-4 inline-block mr-2 rounded-full border border-gray-300"></span>At least 8 characters</p>
-                        <p class="flex items-center"><span id="uppercaseCheck" class="w-4 h-4 inline-block mr-2 rounded-full border border-gray-300"></span>One uppercase letter</p>
-                        <p class="flex items-center"><span id="lowercaseCheck" class="w-4 h-4 inline-block mr-2 rounded-full border border-gray-300"></span>One lowercase letter</p>
-                        <p class="flex items-center"><span id="numberCheck" class="w-4 h-4 inline-block mr-2 rounded-full border border-gray-300"></span>One number</p>
-                        <p class="flex items-center"><span id="specialCheck" class="w-4 h-4 inline-block mr-2 rounded-full border border-gray-300"></span>One special character</p>
+                    {{ form.email|add_class:"peer w-full px-3 py-2 text-sm border border-gray-300 rounded-md outline-none transition-all duration-300 focus:border-teal-500 placeholder-transparent cursor-text" }}
+                    <label for="email" class="absolute left-3 -top-2 text-sm text-gray-600 bg-white px-1 transition-all duration-300 peer-placeholder-shown:top-2 peer-placeholder-shown:text-sm peer-focus:-top-2 peer-focus:text-xs peer-focus:text-teal-500 select-none">Email Address</label>
+                </div>
+                <div class="relative">
+                    {{ form.password1|add_class:"peer w-full px-3 py-2 text-sm border border-gray-300 rounded-md outline-none transition-all duration-300 focus:border-teal-500 placeholder-transparent cursor-text" }}
+                    <label for="id_password1" class="absolute left-3 -top-2 text-sm text-gray-600 bg-white px-1 transition-all duration-300 peer-placeholder-shown:top-2 peer-placeholder-shown:text-sm peer-focus:-top-2 peer-focus:text-xs peer-focus:text-teal-500 select-none">Password</label>
+                    <div id="passwordRequirements" class="hidden mt-1 text-xs text-gray-600 space-y-0.5 fade-in bg-gray-50 p-2 rounded select-none">
+                        <p class="flex items-center"><span id="lengthCheck" class="w-3 h-3 inline-block mr-1 rounded-full border border-gray-300"></span>At least 8 characters</p>
+                        <p class="flex items-center"><span id="uppercaseCheck" class="w-3 h-3 inline-block mr-1 rounded-full border border-gray-300"></span>One uppercase letter</p>
+                        <p class="flex items-center"><span id="lowercaseCheck" class="w-3 h-3 inline-block mr-1 rounded-full border border-gray-300"></span>One lowercase letter</p>
+                        <p class="flex items-center"><span id="numberCheck" class="w-3 h-3 inline-block mr-1 rounded-full border border-gray-300"></span>One number</p>
+                        <p class="flex items-center"><span id="specialCheck" class="w-3 h-3 inline-block mr-1 rounded-full border border-gray-300"></span>One special character</p>
                     </div>
                 </div>
                 <div class="relative">
-                    {{ form.password2|add_class:"peer w-full px-4 py-3 text-sm border-2 border-gray-300 rounded-lg outline-none transition-all duration-300 focus:border-teal-500 placeholder-transparent" }}
-                    <label for="id_password2" class="absolute left-4 -top-3 text-base text-gray-600 bg-white px-1 transition-all duration-300 peer-placeholder-shown:top-3 peer-placeholder-shown:text-base peer-focus:-top-3 peer-focus:text-base peer-focus:text-teal-500">Confirm Password</label>
+                    {{ form.password2|add_class:"peer w-full px-3 py-2 text-sm border border-gray-300 rounded-md outline-none transition-all duration-300 focus:border-teal-500 placeholder-transparent cursor-text" }}
+                    <label for="id_password2" class="absolute left-3 -top-2 text-sm text-gray-600 bg-white px-1 transition-all duration-300 peer-placeholder-shown:top-2 peer-placeholder-shown:text-sm peer-focus:-top-2 peer-focus:text-xs peer-focus:text-teal-500 select-none">Confirm Password</label>
                 </div>
-                <!-- Trigger -->
-                <form method="POST" autocomplete="off">
-                    {% csrf_token %}
-
-                    <div class="flex items-center">
-                        <input type="checkbox" id="terms" name="terms" required class="h-4 w-4 text-teal-600 focus:ring-teal-500 border-gray-300 rounded">
-                        <label for="terms" class="ml-2 block text-sm text-gray-900">
-                            I agree to the <a href="#" class="text-teal-600 hover:underline" data-bs-toggle="modal" data-bs-target="#termsModal">Terms and Conditions</a>
-                        </label>
-                    </div>           
-                    <button type="submit" class="w-full py-3 px-4 bg-gradient-to-r from-teal-600 to-cyan-600 text-white font-bold rounded-lg shadow-lg hover:from-teal-700 hover:to-cyan-700 transition-all duration-300 transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-teal-500">
-                        Join PetVet Clinic
-                    </button>
-                </form>
+                
+                <div class="flex items-center mt-2">
+                    <input type="checkbox" id="terms" name="terms" required class="h-3 w-3 text-teal-600 focus:ring-teal-500 border-gray-300 rounded cursor-pointer">
+                    <label for="terms" class="ml-2 block text-xs text-gray-900 select-none">
+                        I agree to the <a href="#" class="text-teal-600 hover:underline cursor-pointer" data-bs-toggle="modal" data-bs-target="#termsModal">Terms and Conditions</a>
+                    </label>
+                </div>           
+                <button type="submit" class="w-full py-2 px-3 bg-gradient-to-r from-teal-600 to-cyan-600 text-white font-medium rounded-md shadow hover:from-teal-700 hover:to-cyan-700 transition-all duration-300 transform hover:scale-105 focus:outline-none focus:ring-1 focus:ring-offset-1 focus:ring-teal-500 cursor-pointer">
+                    Join PetVet Clinic
+                </button>
+                
+                <p class="mt-2 text-center text-xs text-gray-600 select-none">
+                    Already have an account? <a href="{% url 'registration_login:my_login' %}" class="font-medium text-teal-600 hover:underline cursor-pointer">Sign in</a>
+                </p>
             </form>
-            <p class="mt-8 text-center text-sm text-gray-600">
-                Already have an account? <a href="{% url 'registration_login:my_login' %}" class="font-medium text-teal-600 hover:underline">Sign in</a>
-            </p>
         </div>
     </div>
 
